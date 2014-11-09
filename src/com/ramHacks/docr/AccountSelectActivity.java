@@ -59,7 +59,7 @@ public class AccountSelectActivity extends ActionBarActivity {
 	}
 	
 	public void ftpAcct(View view){
-		
+		startActivity(new Intent( getApplicationContext(), FTPInfoActivity.class) );
 	}
 	
 	public void sendText(View view){
