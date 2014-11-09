@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.Toast;
 
 
 public class LoadActivity extends Activity {
@@ -23,17 +22,12 @@ public class LoadActivity extends Activity {
     protected void onStop() {
         super.onStop();
     }
-    
+    /*
     public void skipLoad(View view){
-    	Context context = getApplicationContext();
-    	CharSequence text = "You impatient motherfucker!";
-    	int duration = 2000;
-
-    	Toast toast = Toast.makeText(context, text, duration);
-    	toast.show();
     	startActivity(new Intent( getApplicationContext(), MainActivity.class ));
     	finish();
     }
+    */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +47,7 @@ public class LoadActivity extends Activity {
                 finish();
                 // You could do this call if you wanted it to be periodic:
             }
-        }, 7500);   // Temporary 1 second delay. Change to 3 seconds in the future.
+        }, 3000);   // Temporary 1 second delay. Change to 3 seconds in the future.
     }
     
 }

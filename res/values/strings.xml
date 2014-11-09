@@ -6,5 +6,24 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="dropAcct">Create a New Dropbox Acct</string>
+    <string name="title_activity_account_select">AccountSelectActivity</string>
+    <string name="app_key">vp3ob16a6d04xph</string>
+    <string name="app_secret">upuvqro3w0y2meu</string>
+    <string name="title_activity_drop_box_setup">DropBoxSetup</string>
+    <string name="emailSetup">E-mail Account</string>
+    <string name="ftpSetup">FTP Profile</string>
+    <string name="dropboxSetup">Dropbox Account</string>
+    <string name="accountSetup">Account Setup Page</string>
+    <string name="proceed">Proceed to Send</string>
+    <string name="dropboxReset">Clear Account</string>
+    <string name="ftpReset">Clear Profile</string>
+    <string name="emailReset">New E-mail</string>
+    <string name="title_activity_send">SendActivity</string>
+    <string name="finalSub">Submit</string>
+    <string name="title_activity_ftpinfo">FTPInfoActivity</string>
+    <string name="ftpserver_hint">FTP Server Here...</string>
+    <string name="ftpname_hint">Account Name Here...</string>
+    <string name="ftppw_hint">Account Password Here...</string>
+    <string name="ftpGet">Process FTP Information</string>
 
 </resources>
