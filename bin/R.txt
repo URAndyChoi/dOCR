@@ -350,7 +350,7 @@ int id action_menu_presenter 0x7f090006
 int id action_mode_bar 0x7f090030
 int id action_mode_bar_stub 0x7f09002f
 int id action_mode_close_button 0x7f090022
-int id action_settings 0x7f09004c
+int id action_settings 0x7f090050
 int id activity_chooser_view_content 0x7f090023
 int id always 0x7f090014
 int id beginning 0x7f09001b
@@ -364,6 +364,7 @@ int id disableHome 0x7f09000d
 int id dropboxClear 0x7f090043
 int id dropboxSetUp 0x7f090042
 int id dropdown 0x7f09001a
+int id editText1 0x7f09004f
 int id edit_query 0x7f090035
 int id end 0x7f09001c
 int id expand_activities_button 0x7f090024
@@ -389,6 +390,9 @@ int id normal 0x7f09000b
 int id progress_circular 0x7f090007
 int id progress_horizontal 0x7f090008
 int id radio 0x7f09002d
+int id radioDropbox 0x7f09004e
+int id radioFTP 0x7f09004d
+int id radioGroup1 0x7f09004c
 int id search_badge 0x7f090037
 int id search_bar 0x7f090036
 int id search_button 0x7f090038
@@ -448,6 +452,9 @@ int menu drop_box_setup 0x7f0c0001
 int menu ftpinfo 0x7f0c0002
 int menu main 0x7f0c0003
 int menu send 0x7f0c0004
+int string DropboxChoice 0x7f0a0029
+int string FTPChoice 0x7f0a0028
+int string PromptSubmit 0x7f0a0027
 int string abc_action_bar_home_description 0x7f0a0001
 int string abc_action_bar_home_description_format 0x7f0a0004
 int string abc_action_bar_home_subtitle_description_format 0x7f0a0005

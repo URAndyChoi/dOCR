@@ -7,17 +7,51 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.ramHacks.docr.SendActivity" >
-    
-    <Button
-   	    android:layout_width="170dp"
-        android:layout_height="50dp"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/finalSend"
-        android:text="@string/finalSub"
-        android:onClick="sendFinal"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="5dp"
-        />
 
+    <Button
+        android:id="@+id/finalSend"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:onClick="sendFinal"
+        android:text="@string/finalSub" />
+
+       <RadioGroup
+           android:id="@+id/radioGroup1"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentTop="true"
+           android:layout_centerHorizontal="true"
+           android:layout_marginTop="135dp" >
+
+           <RadioButton
+               android:id="@+id/radioFTP"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:checked="true"
+               android:text="@string/FTPChoice" />
+
+           <RadioButton
+               android:id="@+id/radioDropbox"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/DropboxChoice" />
+       </RadioGroup>
+
+       <EditText
+           android:id="@+id/editText1"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentTop="true"
+           android:layout_centerHorizontal="true"
+           android:layout_marginTop="28dp"
+           android:ems="10"
+           android:inputType="none"
+           android:text="@string/PromptSubmit" >
+
+           <requestFocus />
+       </EditText>
 
 </RelativeLayout>

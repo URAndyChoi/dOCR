@@ -1,5 +1,8 @@
 package com.ramHacks.docr;
 
+import java.util.ArrayList;
+import org.apache.commons.net.ftp.FTPClient;
+
 import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,14 +33,10 @@ public class FTPInfoActivity extends ActionBarActivity {
 			{
 				public void onClick(View view)
 			    {
-					String address = addrEdit.getText().toString();
-					String acctName = acctNameEdit.getText().toString();
-					String acctPW = acctPWEdit.getText().toString();
-					Intent i = new Intent(getApplicationContext(), AccountSelectActivity.class );
-					i.putExtra("ftpAddr", address);
-					i.putExtra("ftpName", acctName);
-					i.putExtra("ftpPW", acctPW);
-					startActivity(i);
+					FTPInfo.address = addrEdit.getText().toString();
+					FTPInfo.acctName = acctNameEdit.getText().toString();
+					FTPInfo.acctPW = acctPWEdit.getText().toString();
+					FTPInfo.infoWasGiven = true;
 			    }
 			});
 	}

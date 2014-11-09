@@ -1,6 +1,7 @@
 package com.ramHacks.docr;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import com.dropbox.sync.android.DbxAccount;
 import com.dropbox.sync.android.DbxAccountInfo;
@@ -68,6 +69,13 @@ public class AccountSelectActivity extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		if( savedInstanceState.getBoolean("FTPInfoGiven") ){
+			FTPInfo.infoWasGiven = true;
+			ArrayList<String> acctInfo = savedInstanceState.getStringArrayList("FTPAccount");
+			FTPInfo.address = acctInfo.get(0);
+			FTPInfo.acctName = acctInfo.get(1);
+			FTPInfo.acctPW = acctInfo.get(2);
+		}
 		// Account manager object will allow us to reference the user's Dropbox acct. 
 		setContentView(R.layout.activity_account_select);
 		mDbxAcctMgr = DbxAccountManager.getInstance(getApplicationContext(), getString( R.string.app_key ), getString( R.string.app_secret ) );
@@ -144,5 +152,19 @@ public class AccountSelectActivity extends ActionBarActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		
+		outState.putBoolean("FTPInfoGiven", FTPInfo.infoWasGiven);
+		if(FTPInfo.infoWasGiven){
+			ArrayList<String> acctInfo = new ArrayList<String>();
+			acctInfo.add(FTPInfo.address);
+			acctInfo.add(FTPInfo.acctName);
+			acctInfo.add(FTPInfo.acctPW);
+			outState.putStringArrayList("FTPAccount", acctInfo);
+		}
+		
 	}
 }

@@ -25,5 +25,8 @@
     <string name="ftpname_hint">Account Name Here...</string>
     <string name="ftppw_hint">Account Password Here...</string>
     <string name="ftpGet">Process FTP Information</string>
+    <string name="PromptSubmit">Please pick which service you would like to submit your text file to.</string>
+    <string name="FTPChoice">Submit to FTP Server</string>
+    <string name="DropboxChoice">Submit to Dropbox</string>
 
 </resources>

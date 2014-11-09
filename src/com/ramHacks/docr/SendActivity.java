@@ -1,8 +1,19 @@
 package com.ramHacks.docr;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+
+import org.apache.commons.net.ftp.FTPClient;
+
 import com.dropbox.sync.android.DbxAccount;
 import com.dropbox.sync.android.DbxAccountInfo;
 import com.dropbox.sync.android.DbxAccountManager;
+import com.dropbox.sync.android.DbxException;
+import com.dropbox.sync.android.DbxException.Unauthorized;
+import com.dropbox.sync.android.DbxFile;
+import com.dropbox.sync.android.DbxFileSystem;
+import com.dropbox.sync.android.DbxPath;
 
 import android.support.v7.app.ActionBarActivity;
 import android.content.Context;
@@ -10,18 +21,49 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 public class SendActivity extends ActionBarActivity {
 
 	private DbxAccountManager mDbxAcctMgr;
 	
-	public void sendFinal(View view){
-		if( mDbxAcctMgr.hasLinkedAccount() ){
+	public void sendFinal(View view) throws IOException{
+		
+		RadioButton ftp;
+		ftp = (RadioButton) findViewById(R.id.radioFTP);
+		if( ftp.isChecked() ){
+			boolean isConnected = false;
+			FTPClient client = new FTPClient();
 			
+			client.connect(FTPInfo.address);
+			
+		    if(client.isConnected())
+		    {
+		        isConnected = client.login(FTPInfo.acctName, FTPInfo.acctPW);
+		        
+		        if( isConnected )
+		         {
+		        	  FileInputStream in = new FileInputStream(new File(""));
+		              client.storeFile("NameOfFile.txt", in);
+		              in.close();
+		              client.logout();
+		         }
+		        client.disconnect();
+		    }
 		}
-		else{
-			
+		
+		RadioButton dropBox; 
+		
+		dropBox = (RadioButton) findViewById(R.id.radioDropbox);
+		if( dropBox.isChecked() ){
+			if( mDbxAcctMgr.getLinkedAccount().isLinked() ){
+				File file = new File("");
+				DbxFileSystem dbxFs = DbxFileSystem.forAccount(mDbxAcctMgr.getLinkedAccount());
+				DbxPath newPath = new DbxPath("/ParsedTextFiles");
+				DbxFile curFile = dbxFs.create(newPath);
+				curFile.writeFromExistingFile(file, true);
+			}
 		}
 		
 	}
