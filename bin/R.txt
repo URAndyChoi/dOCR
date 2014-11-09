@@ -441,9 +441,9 @@ int layout abc_search_dropdown_item_icons_2line 0x7f030014
 int layout abc_search_view 0x7f030015
 int layout abc_simple_dropdown_hint 0x7f030016
 int layout activity_account_select 0x7f030017
-int layout activity_drop_box_setup 0x7f030018
-int layout activity_ftpinfo 0x7f030019
-int layout activity_main 0x7f03001a
+int layout activity_docr 0x7f030018
+int layout activity_drop_box_setup 0x7f030019
+int layout activity_ftpinfo 0x7f03001a
 int layout activity_send 0x7f03001b
 int layout loading_screen 0x7f03001c
 int layout support_simple_spinner_dropdown_item 0x7f03001d
