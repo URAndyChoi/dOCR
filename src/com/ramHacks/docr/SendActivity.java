@@ -2,7 +2,10 @@ package com.ramHacks.docr;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Calendar;
 
 import org.apache.commons.net.ftp.FTPClient;
 
@@ -16,12 +19,15 @@ import com.dropbox.sync.android.DbxFileSystem;
 import com.dropbox.sync.android.DbxPath;
 
 import android.support.v7.app.ActionBarActivity;
+import android.text.format.Time;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class SendActivity extends ActionBarActivity {
@@ -32,6 +38,7 @@ public class SendActivity extends ActionBarActivity {
 		
 		RadioButton ftp;
 		ftp = (RadioButton) findViewById(R.id.radioFTP);
+		
 		if( ftp.isChecked() ){
 			boolean isConnected = false;
 			FTPClient client = new FTPClient();
@@ -43,11 +50,22 @@ public class SendActivity extends ActionBarActivity {
 		        isConnected = client.login(FTPInfo.acctName, FTPInfo.acctPW);
 		        
 		        if( isConnected )
-		         {
-		        	  FileInputStream in = new FileInputStream(new File(""));
-		              client.storeFile("NameOfFile.txt", in);
-		              in.close();
+		         {	
+//		        	  Calendar c = Calendar.getInstance();
+//		        	  int seconds = c.get(Calendar.SECOND);
+//		        	  FileOutputStream fOut = new FileOutputStream("out_"+seconds+".html");
+//		        	  final String s = Holder.node.getHtmlText();
+//		        	  
+//		        	  fOut.write(s.getBytes());
+//		        	  fOut.flush();
+//		        	  fOut.close();
+//		        	  // FileInputStream in = new FileInputStream(new File(""));
+		              OutputStream s = client.storeUniqueFileStream(Holder.node.getHtmlText());
+		              s.flush();
+		              s.close();
 		              client.logout();
+		              Toast toast = Toast.makeText(getApplicationContext(), "Document Sent!", 3000);
+		              toast.show();
 		         }
 		        client.disconnect();
 		    }
@@ -58,11 +76,22 @@ public class SendActivity extends ActionBarActivity {
 		dropBox = (RadioButton) findViewById(R.id.radioDropbox);
 		if( dropBox.isChecked() ){
 			if( mDbxAcctMgr.getLinkedAccount().isLinked() ){
-				File file = new File("");
+				Calendar c = Calendar.getInstance();
+	        	int seconds = c.get(Calendar.SECOND);
+				
 				DbxFileSystem dbxFs = DbxFileSystem.forAccount(mDbxAcctMgr.getLinkedAccount());
-				DbxPath newPath = new DbxPath("/ParsedTextFiles");
+				DbxPath newPath = new DbxPath("out_"+seconds+".html");
+				
+				
 				DbxFile curFile = dbxFs.create(newPath);
-				curFile.writeFromExistingFile(file, true);
+				try{
+					curFile.writeString(Holder.node.getHtmlText());
+				}
+				finally{
+					curFile.close();
+					Toast toast = Toast.makeText(getApplicationContext(), "Document Sent!", 3000);
+					toast.show();
+				}
 			}
 		}
 		
@@ -72,6 +101,8 @@ public class SendActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_send);
+		TextView v = (TextView) findViewById(R.id.editText1);
+		v.setText(Holder.node.getPlainText());
 		mDbxAcctMgr = DbxAccountManager.getInstance(getApplicationContext(), getString( R.string.app_key ), getString( R.string.app_secret ) );
 	}
 

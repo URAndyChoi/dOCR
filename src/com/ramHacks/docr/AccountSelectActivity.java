@@ -21,6 +21,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 public class AccountSelectActivity extends ActionBarActivity {
@@ -63,19 +65,22 @@ public class AccountSelectActivity extends ActionBarActivity {
 	}
 	
 	public void sendText(View view){
-		startActivity(new Intent( getApplicationContext(), SendActivity.class) );
+		startActivity(new Intent( getApplicationContext(), MainActivity.class) );
 	}
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+    	this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		super.onCreate(savedInstanceState);
+		/*
 		if( savedInstanceState.getBoolean("FTPInfoGiven") ){
 			FTPInfo.infoWasGiven = true;
 			ArrayList<String> acctInfo = savedInstanceState.getStringArrayList("FTPAccount");
 			FTPInfo.address = acctInfo.get(0);
 			FTPInfo.acctName = acctInfo.get(1);
 			FTPInfo.acctPW = acctInfo.get(2);
-		}
+		}*/
 		// Account manager object will allow us to reference the user's Dropbox acct. 
 		setContentView(R.layout.activity_account_select);
 		mDbxAcctMgr = DbxAccountManager.getInstance(getApplicationContext(), getString( R.string.app_key ), getString( R.string.app_secret ) );
@@ -153,7 +158,7 @@ public class AccountSelectActivity extends ActionBarActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
+	/*
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		
@@ -167,4 +172,5 @@ public class AccountSelectActivity extends ActionBarActivity {
 		}
 		
 	}
+	*/
 }

@@ -43,7 +43,7 @@ public class LoadActivity extends Activity {
          
             public void run() {
                 // Do something after 10s = 10000ms
-                startActivity(new Intent( getApplicationContext(), DocrActivity.class ));
+                startActivity(new Intent( getApplicationContext(), AccountSelectActivity.class ));
                 finish();
                 // You could do this call if you wanted it to be periodic:
             }

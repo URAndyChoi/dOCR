@@ -18,40 +18,36 @@
         android:onClick="sendFinal"
         android:text="@string/finalSub" />
 
-       <RadioGroup
-           android:id="@+id/radioGroup1"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_alignParentTop="true"
-           android:layout_centerHorizontal="true"
-           android:layout_marginTop="135dp" >
-
-           <RadioButton
-               android:id="@+id/radioFTP"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:checked="true"
-               android:text="@string/FTPChoice" />
-
-           <RadioButton
-               android:id="@+id/radioDropbox"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="@string/DropboxChoice" />
-       </RadioGroup>
-
        <EditText
            android:id="@+id/editText1"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
+           android:layout_width="fill_parent"
+           android:layout_height="200dp"
            android:layout_alignParentTop="true"
            android:layout_centerHorizontal="true"
-           android:layout_marginTop="28dp"
            android:ems="10"
-           android:inputType="none"
-           android:text="@string/PromptSubmit" >
+           android:inputType="none" >
 
            <requestFocus />
        </EditText>
+
+       <RadioButton
+           android:id="@+id/radioFTP"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_above="@+id/finalSend"
+           android:layout_alignLeft="@+id/finalSend"
+           android:layout_marginBottom="16dp"
+           android:checked="false"
+           android:text="@string/FTPChoice" />
+
+       <RadioButton
+           android:id="@+id/radioDropbox"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_above="@+id/radioFTP"
+           android:layout_centerHorizontal="true"
+           android:layout_marginBottom="14dp"
+           android:checked="true"
+           android:text="@string/DropboxChoice" />
 
 </RelativeLayout>
